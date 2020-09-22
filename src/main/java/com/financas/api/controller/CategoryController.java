@@ -32,6 +32,13 @@ public class CategoryController {
         
     }
     
+    @GetMapping("/{id}")
+    public ResponseEntity<Category> get(@PathVariable Long id) {
+        return service.get(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+    
     @PostMapping
     public ResponseEntity<Category> create(@Valid @RequestBody Category category, HttpServletResponse response) {
         Category newCategory = service.save(category);
@@ -41,12 +48,5 @@ public class CategoryController {
         response.setHeader("Location", uri.toASCIIString());
         
         return ResponseEntity.created(uri).body(newCategory);
-    }
-    
-    @GetMapping("/{id}")
-    public ResponseEntity<Category> get(@PathVariable Long id) {
-        return service.get(id)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 }

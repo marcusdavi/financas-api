@@ -19,13 +19,13 @@ public class CategoryService {
         return categoryRepository.findAll();
     }
 
+    public Optional<Category> get(Long id) {
+        return categoryRepository.findById(id);
+    }
+    
     public Category save(Category category) {
         return categoryRepository.save(category);
         
-    }
-
-    public Optional<Category> get(Long id) {
-        return categoryRepository.findById(id);
     }
 
 }
