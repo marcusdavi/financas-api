@@ -29,9 +29,9 @@ public class FinancasExpectionHandler extends ResponseEntityExceptionHandler{
     protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex,
             HttpHeaders headers, HttpStatus status, WebRequest request) {
         
-        String mensagemUsuario = messageSource.getMessage("invalid.message", null, LocaleContextHolder.getLocale());
-        String mensagemDesenvolvedor = ex.getCause().toString();
-        List<Error> errors = Arrays.asList(new Error(mensagemUsuario, mensagemDesenvolvedor));
+        String userMessage = messageSource.getMessage("invalid.message", null, LocaleContextHolder.getLocale());
+        String devMessage = ex.getCause().toString();
+        List<Error> errors = Arrays.asList(new Error(userMessage, devMessage));
         
         return handleExceptionInternal(ex, errors, headers, HttpStatus.BAD_REQUEST, request);
     }
@@ -49,9 +49,9 @@ public class FinancasExpectionHandler extends ResponseEntityExceptionHandler{
     @ExceptionHandler({EmptyResultDataAccessException.class})
     public ResponseEntity<Object> handleEmptyResultDataAccessException(EmptyResultDataAccessException ex, WebRequest request){
     	
-    	String mensagemUsuario = messageSource.getMessage("resource.not-found", null, LocaleContextHolder.getLocale());
-        String mensagemDesenvolvedor = ex.toString();
-        List<Error> errors = Arrays.asList(new Error(mensagemUsuario, mensagemDesenvolvedor));
+    	String userMessage = messageSource.getMessage("resource.not-found", null, LocaleContextHolder.getLocale());
+        String devMessage = ex.toString();
+        List<Error> errors = Arrays.asList(new Error(userMessage, devMessage));
         
 		return handleExceptionInternal(ex, errors, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     	
@@ -61,9 +61,9 @@ public class FinancasExpectionHandler extends ResponseEntityExceptionHandler{
     	List<Error> errors = new ArrayList<>();
     	
     	bindingResult.getFieldErrors().forEach(e -> {
-    		String mensagemUsuario = messageSource.getMessage(e, LocaleContextHolder.getLocale());
-    		String mensagemDesenvolvedor = e.toString();
-    		errors.add(new Error(mensagemUsuario, mensagemDesenvolvedor));
+    		String userMessage = messageSource.getMessage(e, LocaleContextHolder.getLocale());
+    		String devMessage = e.toString();
+    		errors.add(new Error(userMessage, devMessage));
     	});
 
     	
@@ -72,24 +72,24 @@ public class FinancasExpectionHandler extends ResponseEntityExceptionHandler{
     
     public static class Error {
         
-        private String mensagemUsuario;
-        private String mensagemDesenvolvedor;
+        private String userMessage;
+        private String devMessage;
         
-        public Error(String mensagemUsuario, String mensagemDesenvolvedor) {
-            this.mensagemUsuario = mensagemUsuario;
-            this.mensagemDesenvolvedor = mensagemDesenvolvedor;
+        public Error(String userMessage, String devMessage) {
+            this.userMessage = userMessage;
+            this.devMessage = devMessage;
         }
         public String getMensagemUsuario() {
-            return mensagemUsuario;
+            return userMessage;
         }
-        public void setMensagemUsuario(String mensagemUsuario) {
-            this.mensagemUsuario = mensagemUsuario;
+        public void setMensagemUsuario(String userMessage) {
+            this.userMessage = userMessage;
         }
         public String getMensagemDesenvolvedor() {
-            return mensagemDesenvolvedor;
+            return devMessage;
         }
-        public void setMensagemDesenvolvedor(String mensagemDesenvolvedor) {
-            this.mensagemDesenvolvedor = mensagemDesenvolvedor;
+        public void setMensagemDesenvolvedor(String devMessage) {
+            this.devMessage = devMessage;
         }
         
         
