@@ -13,18 +13,23 @@ import com.financas.api.repository.PersonRepository;
 public class PersonService {
 	
 	@Autowired
-	PersonRepository personRepository;
+	PersonRepository repository;
 
 	public List<Person> findAll() {
-		return personRepository.findAll();
+		return repository.findAll();
 	}
 
 	public Optional<Person> get(Long id) {
-		return personRepository.findById(id);
+		return repository.findById(id);
 	}
 
 	public Person save(Person person) {
-		return personRepository.save(person);
+		return repository.save(person);
+	}
+
+	public void delete(Long id) {
+		repository.deleteById(id);
+		
 	}
 
 }

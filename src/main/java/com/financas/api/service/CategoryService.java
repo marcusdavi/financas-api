@@ -13,19 +13,25 @@ import com.financas.api.repository.CategoryRepository;
 public class CategoryService {
     
     @Autowired
-    private CategoryRepository categoryRepository;
+    private CategoryRepository repository;
 
     public List<Category> findAll() {
-        return categoryRepository.findAll();
+        return repository.findAll();
     }
 
     public Optional<Category> get(Long id) {
-        return categoryRepository.findById(id);
+        return repository.findById(id);
     }
     
     public Category save(Category category) {
-        return categoryRepository.save(category);
+        return repository.save(category);
         
     }
+
+	public void delete(Long id) {
+
+		repository.deleteById(id);
+
+	}
 
 }

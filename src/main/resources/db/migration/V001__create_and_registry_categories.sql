@@ -3,9 +3,9 @@ CREATE TABLE category (
 	name VARCHAR(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO category (name) values ('Lazer');
-INSERT INTO category (name) values ('Alimentação');
-INSERT INTO category (name) values ('Moradia');
-INSERT INTO category (name) values ('Farmácia');
+INSERT INTO category (name) values ('Recreation');
+INSERT INTO category (name) values ('Food');
+INSERT INTO category (name) values ('Home');
+INSERT INTO category (name) values ('Drugstore');
 INSERT INTO category (name) values ('Pet');
-INSERT INTO category (name) values ('Outros');
+INSERT INTO category (name) values ('Others');
