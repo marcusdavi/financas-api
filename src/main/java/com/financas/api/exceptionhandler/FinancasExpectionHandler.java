@@ -30,7 +30,7 @@ public class FinancasExpectionHandler extends ResponseEntityExceptionHandler{
             HttpHeaders headers, HttpStatus status, WebRequest request) {
         
         String userMessage = messageSource.getMessage("invalid.message", null, LocaleContextHolder.getLocale());
-        String devMessage = ex.getCause().toString();
+        String devMessage = ex.getCause() != null ? ex.getCause().toString() : ex.toString();
         List<Error> errors = Arrays.asList(new Error(userMessage, devMessage));
         
         return handleExceptionInternal(ex, errors, headers, HttpStatus.BAD_REQUEST, request);
@@ -79,16 +79,16 @@ public class FinancasExpectionHandler extends ResponseEntityExceptionHandler{
             this.userMessage = userMessage;
             this.devMessage = devMessage;
         }
-        public String getMensagemUsuario() {
+        public String getUserMessage() {
             return userMessage;
         }
-        public void setMensagemUsuario(String userMessage) {
+        public void setUserMessage(String userMessage) {
             this.userMessage = userMessage;
         }
-        public String getMensagemDesenvolvedor() {
+        public String getDevMessage() {
             return devMessage;
         }
-        public void setMensagemDesenvolvedor(String devMessage) {
+        public void setDevMessage(String devMessage) {
             this.devMessage = devMessage;
         }
         
