@@ -48,7 +48,7 @@ public class PersonController {
     
     @PostMapping
     public ResponseEntity<Person> create(@Valid @RequestBody Person person, HttpServletResponse response) {
-    	Person newPerson = service.save(person);
+    	Person newPerson = service.create(person);
         
         publisher.publishEvent(new ResourceCreatedEvent(this, response, newPerson.getId()));
         

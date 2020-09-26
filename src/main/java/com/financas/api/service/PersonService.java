@@ -25,7 +25,7 @@ public class PersonService {
 		return repository.findById(id);
 	}
 
-	public Person save(Person person) {
+	public Person create(Person person) {
 		return repository.save(person);
 	}
 
