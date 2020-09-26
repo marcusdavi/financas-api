@@ -19,4 +19,31 @@ INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id
 values ("Pague Menos", '2020-09-18', null, 300.52, "Remédios pra Gripe", "DEBIT", 4, 1);
 
 INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id_category, id_person)
-values ("Venda das Maletas", '2020-09-19', null, 40.00, "Venda na OLX", "CREDIT", 6, 1);
+values ("Venda das Maletas", '2020-09-19', null, 40.00, "Venda na OLX", "CREDIT", 6, 3);
+
+INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id_category, id_person)
+values ("Banho PetPrime", '2020-09-20', null, 30.00, "Banho de 20 de Setembro", "DEBIT", 3, 1);
+
+INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id_category, id_person)
+values ("Pague Menos", '2020-09-18', null, 300.52, "Remédios pra Gripe", "DEBIT", 2, 2);
+
+INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id_category, id_person)
+values ("Venda das Maletas", '2020-09-19', null, 40.00, "Venda na OLX", "CREDIT", 1, 2);
+
+INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id_category, id_person)
+values ("Banho PetPrime", '2020-09-20', null, 30.00, "Banho de 20 de Setembro", "DEBIT", 6, 2);
+
+INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id_category, id_person)
+values ("Pague Menos", '2020-09-18', null, 300.52, "Remédios pra Gripe", "DEBIT", 5, 3);
+
+INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id_category, id_person)
+values ("Venda das Maletas", '2020-09-19', null, 40.00, "Venda na OLX", "CREDIT", 4, 2);
+
+INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id_category, id_person)
+values ("Banho PetPrime", '2020-09-20', null, 30.00, "Banho de 20 de Setembro", "DEBIT", 5, 1);
+
+INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id_category, id_person)
+values ("Pague Menos", '2020-09-18', null, 300.52, "Remédios pra Gripe", "DEBIT", 4, 3);
+
+INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id_category, id_person)
+values ("Venda das Maletas", '2020-09-19', null, 40.00, "Venda na OLX", "CREDIT", 6, 2);
