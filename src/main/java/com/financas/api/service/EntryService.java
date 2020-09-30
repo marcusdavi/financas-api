@@ -41,7 +41,7 @@ public class EntryService {
 		if(optPerson.isPresent() && optPerson.get().getActive()) {
 			return entryRepository.save(entry);		
 		} else {
-			throw new UnknownOrInactivePersonException();
+			throw new UnknownOrInactivePersonException("It's not possible to create entry for the person unknown or inactive.");
 		}
 	}
 

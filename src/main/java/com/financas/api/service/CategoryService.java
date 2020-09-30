@@ -33,7 +33,7 @@ public class CategoryService {
 			try {
 				repository.deleteById(id);	
 			} catch (Exception e) {
-				throw new CategoryCannotBeExcludedException();
+				throw new CategoryCannotBeExcludedException(e.toString());
 			}
 
 		
