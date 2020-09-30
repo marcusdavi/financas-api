@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.financas.api.exception.CategoryCannotBeExcludedException;
 import com.financas.api.model.Category;
 import com.financas.api.repository.CategoryRepository;
 
@@ -29,8 +30,13 @@ public class CategoryService {
     }
 
 	public void delete(Long id) {
+			try {
+				repository.deleteById(id);	
+			} catch (Exception e) {
+				throw new CategoryCannotBeExcludedException();
+			}
 
-		repository.deleteById(id);
+		
 
 	}
 

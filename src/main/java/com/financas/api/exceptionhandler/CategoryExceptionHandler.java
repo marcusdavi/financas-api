@@ -15,18 +15,18 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.financas.api.exception.UnknownOrInactivePersonException;
+import com.financas.api.exception.CategoryCannotBeExcludedException;
 
 @ControllerAdvice
-public class EntryExpectionHandler extends ResponseEntityExceptionHandler{
+public class CategoryExceptionHandler extends ResponseEntityExceptionHandler{
     
     @Autowired
     private MessageSource messageSource;
     
-    @ExceptionHandler({UnknownOrInactivePersonException.class})
-public ResponseEntity<Object> handleUnknownOrInactivePersonException(UnknownOrInactivePersonException ex, WebRequest request){
+    @ExceptionHandler({CategoryCannotBeExcludedException.class})
+public ResponseEntity<Object> handleCategoryCannotBeExcludedException(CategoryCannotBeExcludedException ex, WebRequest request){
     	
-    	String userMessage = messageSource.getMessage("person.unknown-or-inactive", null, LocaleContextHolder.getLocale());
+    	String userMessage = messageSource.getMessage("category.category-cannot-be-excluded", null, LocaleContextHolder.getLocale());
         String devMessage = ExceptionUtils.getRootCauseMessage(ex);
         List<Error> errors = Arrays.asList(new Error(userMessage, devMessage));
         

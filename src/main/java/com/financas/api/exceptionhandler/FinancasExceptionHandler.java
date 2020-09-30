@@ -22,7 +22,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
-public class FinancasExpectionHandler extends ResponseEntityExceptionHandler{
+public class FinancasExceptionHandler extends ResponseEntityExceptionHandler{
     
     @Autowired
     private MessageSource messageSource;
