@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,12 +34,14 @@ public class PersonController {
     private ApplicationEventPublisher publisher;
     
     @GetMapping
+    @PreAuthorize("hasAuthority('PERMISSION_SEARCH_PERSON') and #oauth2.hasScope('read')")
     public List<Person> list() {
        return service.findAll();
         
     }
     
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('PERMISSION_SEARCH_PERSON') and #oauth2.hasScope('read')")
     public ResponseEntity<Person> get(@PathVariable Long id) {
     	return service.get(id)
                 .map(ResponseEntity::ok)
@@ -47,6 +50,7 @@ public class PersonController {
     }
     
     @PostMapping
+    @PreAuthorize("hasAuthority('PERMISSION_CREATE_PERSON') and #oauth2.hasScope('write')")
     public ResponseEntity<Person> create(@Valid @RequestBody Person person, HttpServletResponse response) {
     	Person newPerson = service.create(person);
         
@@ -56,6 +60,7 @@ public class PersonController {
     }
     
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('PERMISSION_UPDATE_PERSON') and #oauth2.hasScope('write')")
     public ResponseEntity<Person> delete(@PathVariable Long id) {
     	service.delete(id);
     	

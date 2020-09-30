@@ -21,16 +21,17 @@ CREATE TABLE user_permission (
 INSERT INTO user (id, name, email, password) values (1, 'Administrator', 'admin@financas.com', '$2a$10$0bfx5KLVia7W8vu65olYYemg.mnjtMOhTa9f0VyIDCphb7sAFte3W');
 INSERT INTO user (id, name, email, password) values (2, 'Marcus', 'marcus@financas.com', '$2a$10$PxTTqFqrVVXWl4CQSHGyKOFjB60fokH2onucTalZC3jWeeDDbQFVW');
 
-INSERT INTO permission (id, description) values (1, 'permission_CREATE_CATEGORY');
-INSERT INTO permission (id, description) values (2, 'permission_SEARCH_CATEGORY');
+INSERT INTO permission (id, description) values (1, 'PERMISSION_CREATE_CATEGORY');
+INSERT INTO permission (id, description) values (2, 'PERMISSION_SEARCH_CATEGORY');
+INSERT INTO permission (id, description) values (3, 'PERMISSION_REMOVE_CATEGORY');
 
-INSERT INTO permission (id, description) values (3, 'permission_CREATE_PERSON');
-INSERT INTO permission (id, description) values (4, 'permission_REMOVE_PERSON');
-INSERT INTO permission (id, description) values (5, 'permission_SEARCH_PERSON');
+INSERT INTO permission (id, description) values (4, 'PERMISSION_CREATE_PERSON');
+INSERT INTO permission (id, description) values (5, 'PERMISSION_REMOVE_PERSON');
+INSERT INTO permission (id, description) values (6, 'PERMISSION_SEARCH_PERSON');
 
-INSERT INTO permission (id, description) values (6, 'permission_CREATE_ENTRY');
-INSERT INTO permission (id, description) values (7, 'permission_REMOVE_ENTRY');
-INSERT INTO permission (id, description) values (8, 'permission_SEARCH_ENTRY');
+INSERT INTO permission (id, description) values (7, 'PERMISSION_CREATE_ENTRY');
+INSERT INTO permission (id, description) values (8, 'PERMISSION_REMOVE_ENTRY');
+INSERT INTO permission (id, description) values (9, 'PERMISSION_SEARCH_ENTRY');
 
 -- admin
 INSERT INTO user_permission (id_user, id_permission) values (1, 1);
@@ -41,8 +42,9 @@ INSERT INTO user_permission (id_user, id_permission) values (1, 5);
 INSERT INTO user_permission (id_user, id_permission) values (1, 6);
 INSERT INTO user_permission (id_user, id_permission) values (1, 7);
 INSERT INTO user_permission (id_user, id_permission) values (1, 8);
+INSERT INTO user_permission (id_user, id_permission) values (1, 9);
 
 -- marcus
 INSERT INTO user_permission (id_user, id_permission) values (2, 2);
-INSERT INTO user_permission (id_user, id_permission) values (2, 5);
-INSERT INTO user_permission (id_user, id_permission) values (2, 8);
+INSERT INTO user_permission (id_user, id_permission) values (2, 6);
+INSERT INTO user_permission (id_user, id_permission) values (2, 9);

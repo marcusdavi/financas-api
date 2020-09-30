@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,12 +34,14 @@ public class EntryController {
     private ApplicationEventPublisher publisher;
     
     @GetMapping
+    @PreAuthorize("hasAuthority('PERMISSION_SEARCH_ENTRY') and #oauth2.hasScope('read')")
     public Page<Entry> list(EntryFilter filter, Pageable pageable) {
        return service.list(filter, pageable);
         
     }
     
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('PERMISSION_SEARCH_ENTRY') and #oauth2.hasScope('read')")
     public ResponseEntity<Entry> get(@PathVariable Long id) {
     	return service.get(id)
                 .map(ResponseEntity::ok)
@@ -47,6 +50,7 @@ public class EntryController {
     }
     
     @PostMapping
+    @PreAuthorize("hasAuthority('PERMISSION_CREATE_ENTRY') and #oauth2.hasScope('write')")
     public ResponseEntity<Entry> create(@Valid @RequestBody Entry entry, HttpServletResponse response) {
     	Entry newEntry = service.create(entry);
         
@@ -57,6 +61,7 @@ public class EntryController {
     }
     
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('PERMISSION_REMOVE_ENTRY') and #oauth2.hasScope('write')")
     public ResponseEntity<Entry> delete(@PathVariable Long id){
     	
    	 service.delete(id);
