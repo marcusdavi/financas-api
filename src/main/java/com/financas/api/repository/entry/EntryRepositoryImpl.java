@@ -17,8 +17,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 
 import com.financas.api.filter.EntryFilter;
+import com.financas.api.model.Category_;
 import com.financas.api.model.Entry;
 import com.financas.api.model.Entry_;
+import com.financas.api.model.Person_;
+import com.financas.api.repository.projection.EntryProjection;
 
 public class EntryRepositoryImpl implements EntryRepositoryQuery{
 	
@@ -36,6 +39,33 @@ public class EntryRepositoryImpl implements EntryRepositoryQuery{
 		criteria.where(predicates);
 		
 		TypedQuery<Entry> query = manager.createQuery(criteria);
+		addPagination(query, pageable);
+		
+		return new PageImpl<>(query.getResultList(), pageable, getTotal(filter));
+	}
+	
+	@Override
+	public Page<EntryProjection> findEntryProjectionByFilter(EntryFilter filter, Pageable pageable) {
+		CriteriaBuilder builder = manager.getCriteriaBuilder();
+		CriteriaQuery<EntryProjection> criteria = builder.createQuery(EntryProjection.class);
+		Root<Entry> root = criteria.from(Entry.class);
+		
+		criteria.select(builder.construct(EntryProjection.class
+				,root.get(Entry_.id)
+				,root.get(Entry_.description)
+				,root.get(Entry_.expirationDate)
+				,root.get(Entry_.payDate)
+				,root.get(Entry_.value)
+				,root.get(Entry_.type)
+				,root.get(Entry_.category).get(Category_.name)
+				,root.get(Entry_.person).get(Person_.name)
+				));
+		
+		
+		Predicate[] predicates = createRestrictions(filter, builder, root);
+		criteria.where(predicates);
+		
+		TypedQuery<EntryProjection> query = manager.createQuery(criteria);
 		addPagination(query, pageable);
 		
 		return new PageImpl<>(query.getResultList(), pageable, getTotal(filter));
@@ -63,7 +93,7 @@ public class EntryRepositoryImpl implements EntryRepositoryQuery{
 	}
 	
 
-	private void addPagination(TypedQuery<Entry> query, Pageable pageable) {
+	private void addPagination(TypedQuery<?> query, Pageable pageable) {
 		Integer pageNow = pageable.getPageNumber();
 		Integer pageSize = pageable.getPageSize();
 		Integer firstRegistry = pageNow * pageSize;

@@ -58,7 +58,7 @@ public class FinancasExceptionHandler extends ResponseEntityExceptionHandler{
 		return handleExceptionInternal(ex, errors, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     	
     }
-    
+        
     @ExceptionHandler({DataIntegrityViolationException.class})
 public ResponseEntity<Object> handleDataIntegrityViolationException(DataIntegrityViolationException ex, WebRequest request){
     	

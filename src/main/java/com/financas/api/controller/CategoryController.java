@@ -49,7 +49,9 @@ public class CategoryController {
     @PreAuthorize("hasAuthority('PERMISSION_CREATE_CATEGORY') and #oauth2.hasScope('write')")
     @PostMapping
     public ResponseEntity<Category> create(@Valid @RequestBody Category category, HttpServletResponse response) {
-        Category newCategory = service.save(category);
+        
+    	
+    	Category newCategory = service.save(category);
         
         publisher.publishEvent(new ResourceCreatedEvent(this, response, newCategory.getId()));
         

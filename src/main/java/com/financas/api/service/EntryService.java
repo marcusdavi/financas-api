@@ -15,6 +15,7 @@ import com.financas.api.model.Entry;
 import com.financas.api.model.Person;
 import com.financas.api.repository.EntryRepository;
 import com.financas.api.repository.PersonRepository;
+import com.financas.api.repository.projection.EntryProjection;
 
 @Service
 public class EntryService {
@@ -28,6 +29,11 @@ public class EntryService {
 	public Page<Entry> list(EntryFilter filter, Pageable pageable) {
 		return entryRepository.findEntriesByFilter(filter, pageable);
 
+	}
+	
+
+	public Page<EntryProjection> resume(EntryFilter filter, Pageable pageable) {
+		return entryRepository.findEntryProjectionByFilter(filter, pageable);
 	}
 
 	public Optional<Entry> get(Long id) {

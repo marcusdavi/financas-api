@@ -13,37 +13,49 @@ CREATE TABLE entry (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id_category, id_person)
-values ("Banho PetPrime", '2020-09-20', null, 30.00, "Banho de 20 de Setembro", "DEBIT", 5, 1);
+values ("Pet Bath", '2020-09-06', '2020-09-06', 35.00, "Shower and hygienic grooming", "DEBIT", 5, 1);
 
 INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id_category, id_person)
-values ("Pague Menos", '2020-09-18', null, 300.52, "Remédios pra Gripe", "DEBIT", 4, 1);
+values ("Globo Drugstore", '2020-09-18', '2020-09-18', 300.52, "Flu remedies", "DEBIT", 4, 1);
 
 INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id_category, id_person)
-values ("Venda das Maletas", '2020-09-19', null, 40.00, "Venda na OLX", "CREDIT", 6, 3);
+values ("Briefcase Sale", '2020-09-19', '2020-09-19', 40.00, "OLX Sale", "CREDIT", 6, 1);
 
 INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id_category, id_person)
-values ("Banho PetPrime", '2020-09-20', null, 30.00, "Banho de 20 de Setembro", "DEBIT", 3, 1);
+values ("Pet Bath", '2020-09-20', '2020-09-20', 30.00, "only Shower", "DEBIT", 5, 1);
 
 INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id_category, id_person)
-values ("Pague Menos", '2020-09-18', null, 300.52, "Remédios pra Gripe", "DEBIT", 2, 2);
+values ("Energy bill", '2020-09-20', '2020-09-06', 89.15, "09-2020 bill", "DEBIT", 3, 1);
 
 INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id_category, id_person)
-values ("Venda das Maletas", '2020-09-19', null, 40.00, "Venda na OLX", "CREDIT", 1, 2);
+values ("Salary", '2020-09-01', '2020-09-01', 1045.15, "08-2020 salary", "CREDIT", 3, 1);
 
 INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id_category, id_person)
-values ("Banho PetPrime", '2020-09-20', null, 30.00, "Banho de 20 de Setembro", "DEBIT", 6, 2);
+values ("Outback", '2020-09-14', '2020-09-14', 1045.15, "datting aniversary", "CREDIT", 2, 1);
 
 INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id_category, id_person)
-values ("Pague Menos", '2020-09-18', null, 300.52, "Remédios pra Gripe", "DEBIT", 5, 3);
+values ("Cinema", '2020-09-14', '2020-09-14', 32.00, "Tickests for Avengers 9 and popcorn", "CREDIT", 1, 1);
 
 INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id_category, id_person)
-values ("Venda das Maletas", '2020-09-19', null, 40.00, "Venda na OLX", "CREDIT", 4, 2);
+values ("Pet Bath", '2020-08-06', '2020-08-06', 35.99, "Shower and hygienic grooming", "DEBIT", 5, 2);
 
 INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id_category, id_person)
-values ("Banho PetPrime", '2020-09-20', null, 30.00, "Banho de 20 de Setembro", "DEBIT", 5, 1);
+values ("Globo Drugstore", '2020-08-18', '2020-08-18', 300.52, "Flu remedies", "DEBIT", 4, 2);
 
 INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id_category, id_person)
-values ("Pague Menos", '2020-09-18', null, 300.52, "Remédios pra Gripe", "DEBIT", 4, 3);
+values ("Briefcase Sale", '2020-08-19', '2020-08-19', 40.99, "OLX Sale", "CREDIT", 6, 2);
 
 INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id_category, id_person)
-values ("Venda das Maletas", '2020-09-19', null, 40.00, "Venda na OLX", "CREDIT", 6, 2);
+values ("Pet Bath", '2020-08-20', '2020-08-20', 30.99, "only Shower", "DEBIT", 5, 2);
+
+INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id_category, id_person)
+values ("Energy bill", '2020-08-20', '2020-08-06', 89.15, "09-2020 bill", "DEBIT", 3, 2);
+
+INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id_category, id_person)
+values ("Salary", '2020-08-01', '2020-08-01', 1045.15, "08-2020 salary", "CREDIT", 3, 2);
+
+INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id_category, id_person)
+values ("Outback", '2020-08-14', '2020-08-14', 1045.15, "datting aniversary", "CREDIT", 2, 2);
+
+INSERT INTO entry (description, expiration_date, pay_date, value, note, type, id_category, id_person)
+values ("Cinema", '2020-08-14', '2020-08-14', 32.99, "Tickests for Avengers 9 and popcorn", "CREDIT", 1, 2);

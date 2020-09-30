@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.financas.api.event.ResourceCreatedEvent;
 import com.financas.api.filter.EntryFilter;
 import com.financas.api.model.Entry;
+import com.financas.api.repository.projection.EntryProjection;
 import com.financas.api.service.EntryService;
 
 @RestController
@@ -37,6 +38,13 @@ public class EntryController {
     @PreAuthorize("hasAuthority('PERMISSION_SEARCH_ENTRY') and #oauth2.hasScope('read')")
     public Page<Entry> list(EntryFilter filter, Pageable pageable) {
        return service.list(filter, pageable);
+        
+    }
+    
+    @GetMapping(params = "resume")
+    @PreAuthorize("hasAuthority('PERMISSION_SEARCH_ENTRY') and #oauth2.hasScope('read')")
+    public Page<EntryProjection> resume(EntryFilter filter, Pageable pageable) {
+       return service.resume(filter, pageable);
         
     }
     
