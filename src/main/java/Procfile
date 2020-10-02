@@ -1,0 +1,1 @@
+web: java -DServer.port=$PORT -Dspring.profiles.active=prod $JAVA_OPTS -jar target/financas*.jar
