@@ -55,13 +55,9 @@ public class PersonService {
 
 
 	private Person findPersonById(Long id) {
-		Optional<Person> optionalPerson = repository.findById(id);
 		
-		if(optionalPerson.isPresent()){
-			return optionalPerson.get();
-		} else {
-			throw new EmptyResultDataAccessException(1);
-		}
+		return repository.findById(id).orElseThrow(() -> new EmptyResultDataAccessException(1));
+		
 	}
 	
 }

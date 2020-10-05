@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,10 +20,10 @@ import com.financas.api.repository.projection.EntryProjection;
 
 @Service
 public class EntryService {
-	
+
 	@Autowired
 	private EntryRepository entryRepository;
-	
+
 	@Autowired
 	private PersonRepository personRepository;
 
@@ -30,7 +31,6 @@ public class EntryService {
 		return entryRepository.findEntriesByFilter(filter, pageable);
 
 	}
-	
 
 	public Page<EntryProjection> resume(EntryFilter filter, Pageable pageable) {
 		return entryRepository.findEntryProjectionByFilter(filter, pageable);
@@ -41,19 +41,36 @@ public class EntryService {
 	}
 
 	public Entry create(@Valid Entry entry) {
-		
-		Optional<Person> optPerson = personRepository.findById(entry.getPerson().getId());
-		
-		if(optPerson.isPresent() && optPerson.get().getActive()) {
-			return entryRepository.save(entry);		
-		} else {
-			throw new UnknownOrInactivePersonException("It's not possible to create entry for the person unknown or inactive.");
-		}
+
+		validateEntryPerson(entry);
+
+		return entryRepository.save(entry);
 	}
 
 	public void delete(Long id) {
 		entryRepository.deleteById(id);
-		
+
+	}
+
+	public Entry update(Long id, Entry updateEntry) {
+		Entry entry = entryRepository.findById(id).orElseThrow(() -> new IllegalArgumentException());
+
+		if (!updateEntry.getPerson().equals(entry.getPerson())) {
+			validateEntryPerson(updateEntry);
+		}
+		BeanUtils.copyProperties(updateEntry, entry, "id");
+
+		return entryRepository.save(entry);
+	}
+
+	private void validateEntryPerson(Entry entry) {
+
+		Optional<Person> optPerson = personRepository.findById(entry.getPerson().getId());
+
+		if (!(optPerson.isPresent() && optPerson.get().getActive())) {
+			throw new UnknownOrInactivePersonException(
+					"It's not possible to create entry for the person unknown or inactive.");
+		}
 	}
 
 }
