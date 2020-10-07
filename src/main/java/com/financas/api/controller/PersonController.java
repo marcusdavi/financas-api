@@ -25,7 +25,7 @@ import com.financas.api.model.Person;
 import com.financas.api.service.PersonService;
 
 @RestController
-@RequestMapping("/persons")
+@RequestMapping("/person")
 public class PersonController {
     
     @Autowired

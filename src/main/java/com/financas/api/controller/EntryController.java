@@ -26,7 +26,7 @@ import com.financas.api.repository.projection.EntryProjection;
 import com.financas.api.service.EntryService;
 
 @RestController
-@RequestMapping("/entries")
+@RequestMapping("/entry")
 public class EntryController {
 
 	@Autowired

@@ -23,7 +23,7 @@ import com.financas.api.model.Category;
 import com.financas.api.service.CategoryService;
 
 @RestController
-@RequestMapping("/categories")
+@RequestMapping("/category")
 public class CategoryController {
     
     @Autowired
