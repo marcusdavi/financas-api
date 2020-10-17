@@ -16,7 +16,7 @@ public class CategoryService {
     @Autowired
     private CategoryRepository repository;
 
-    public List<Category> findAll() {
+    public List<Category> list() {
         return repository.findAll();
     }
 
@@ -24,7 +24,7 @@ public class CategoryService {
         return repository.findById(id);
     }
     
-    public Category save(Category category) {
+    public Category create(Category category) {
         return repository.save(category);
         
     }

@@ -34,7 +34,7 @@ public class CategoryController {
     
     @GetMapping
     public List<Category> list() {
-       return service.findAll();
+       return service.list();
         
     }
     
@@ -51,7 +51,7 @@ public class CategoryController {
     public ResponseEntity<Category> create(@Valid @RequestBody Category category, HttpServletResponse response) {
         
     	
-    	Category newCategory = service.save(category);
+    	Category newCategory = service.create(category);
         
         publisher.publishEvent(new ResourceCreatedEvent(this, response, newCategory.getId()));
         
