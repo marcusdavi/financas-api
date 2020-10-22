@@ -106,15 +106,14 @@ public class CategoryControllerTest {
 		assertEquals("Pet", response.getBody().getName());
 		assertEquals(HttpStatus.CREATED, response.getStatusCode());
 	}
-	
+
 	@Test
-	public void deleteOk() {
+	public void testDeleteOk() {
 
 		ResponseEntity<Category> response = controller.delete(1L);
-		
+
 		assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
 	}
-
 
 	private Category buildCategory(Long id, String name) {
 		Category category = new Category();

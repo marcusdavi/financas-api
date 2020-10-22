@@ -65,7 +65,7 @@ public class PersonController {
     public ResponseEntity<Person> delete(@PathVariable Long id) {
     	service.delete(id);
     	
-    	return ResponseEntity.ok().build();
+    	return ResponseEntity.noContent().build();
     	
     }
     
