@@ -117,7 +117,7 @@ public class PersonControllerTest {
 
 		Person person = buildPerson(2L, "Maria João", false);
 
-		when(service.create(Mockito.any())).thenReturn(person);
+		when(service.create(person)).thenReturn(person);
 
 		ResponseEntity<Person> response = controller.create(person, null);
 
@@ -133,6 +133,23 @@ public class PersonControllerTest {
 		ResponseEntity<Person> response = controller.delete(1L);
 		
 		assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
+	}
+	
+	@Test
+	public void testUpdateActiveOk() {
+		
+		ResponseEntity<Person> response = controller.updateActive(2L, true);
+		
+		assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
+	}
+	
+	@Test
+	public void testActiveOk() {
+		Person person = buildPerson(2L, "Maria João", false);
+		
+		ResponseEntity<Person> response = controller.update(2L, person);
+		
+		assertEquals(HttpStatus.OK, response.getStatusCode());
 	}
 
 	private Person buildPerson(Long id, String name, Boolean active) {

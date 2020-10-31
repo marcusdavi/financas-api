@@ -70,6 +70,7 @@ public class PersonController {
     }
     
     @PutMapping("/{id}")
+    @PreAuthorize("hasAuthority('PERMISSION_CREATE_PERSON') and #oauth2.hasScope('write')")
     public ResponseEntity<Person> update(@PathVariable Long id, @Valid @RequestBody Person person) {
     	Person personUpdate = service.update(id, person);
     	
@@ -78,7 +79,8 @@ public class PersonController {
     }
     
     @PutMapping("/{id}/active")
-    public ResponseEntity<Person> update(@PathVariable Long id, @RequestBody Boolean active) {
+    @PreAuthorize("hasAuthority('PERMISSION_CREATE_PERSON') and #oauth2.hasScope('write')")
+    public ResponseEntity<Person> updateActive(@PathVariable Long id, @RequestBody Boolean active) {
     	service.updateActive(id, active);
     	
     	return ResponseEntity.noContent().build();
