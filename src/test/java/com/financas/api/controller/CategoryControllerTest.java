@@ -114,6 +114,21 @@ public class CategoryControllerTest {
 
 		assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
 	}
+	
+	@Test
+	public void testUpdateOk() {
+
+		Category category = buildCategory(1L, "Pet");
+
+		when(service.update(Mockito.anyLong(), Mockito.any())).thenReturn(category);
+
+		ResponseEntity<Category> response = controller.update(1L, category);
+
+		assertNotNull(response.getBody());
+		assertEquals(1L, response.getBody().getId());
+		assertEquals("Pet", response.getBody().getName());
+		assertEquals(HttpStatus.OK, response.getStatusCode());
+	}
 
 	private Category buildCategory(Long id, String name) {
 		Category category = new Category();

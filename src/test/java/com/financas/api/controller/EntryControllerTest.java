@@ -4,6 +4,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 
 import java.math.BigDecimal;
@@ -156,6 +157,53 @@ public class EntryControllerTest {
 
 		assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
 
+	}
+	
+	@Test
+	public void testCreateOk() {
+		Entry entry = buildEntry(2L, "Pet Prime", LocalDate.now());
+
+		when(service.create(Mockito.any())).thenReturn(entry);
+
+		ResponseEntity<Entry> response = controller.create(entry, null);
+
+		assertNotNull(response.getBody());
+		assertEquals(2L, response.getBody().getId());
+		assertEquals("Pet Prime", response.getBody().getDescription());
+		assertEquals(HttpStatus.CREATED, response.getStatusCode());
+	}
+	
+	@Test
+	public void testDeleteOk() {
+
+		ResponseEntity<Entry> response = controller.delete(1L);
+
+		assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
+	}
+	
+	@Test
+	public void testUpdateOk() {
+
+		Entry entry = buildEntry(2L, "Pet Prime", LocalDate.now());
+
+		when(service.update(Mockito.anyLong(), Mockito.any())).thenReturn(entry);
+
+		ResponseEntity<Entry> response = controller.update(2L, entry);
+
+		assertNotNull(response.getBody());
+		assertEquals(2L, response.getBody().getId());
+		assertEquals("Pet Prime", response.getBody().getDescription());
+		assertEquals(HttpStatus.OK, response.getStatusCode());
+	}
+	
+	@Test
+	public void testUpdateException() {
+
+		Entry entry = buildEntry(2L, "Pet Prime", LocalDate.now());
+		
+		doThrow(new IllegalArgumentException()).when(service).update(Mockito.anyLong(),Mockito.any());
+
+		assertEquals(HttpStatus.NOT_FOUND, controller.update(2L, entry).getStatusCode());
 	}
 
 	private Entry buildEntry(Long id, String description, LocalDate expirationDate) {
