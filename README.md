@@ -1,13 +1,13 @@
 # Financas-api
 API-REST with Spring Boot -System for registration of financial transactions.
 
-### 1. Endpoints
+## 1. Endpoints
 
 **Basic Authentication:**
 * **user:** admin@financas.com
 * **pass:** admin
 
-#### a) Category
+### a) Category
 **1. GET /category** - List with all categories.
 
 **2. GET /category/{id}** - Detail the category with id equal to {id}
@@ -22,7 +22,7 @@ API-REST with Spring Boot -System for registration of financial transactions.
 }
 ```
 
-#### b) Person
+### b) Person
 **1. GET /person** - List with all people.
 
 **2. GET /person/{id}** - Detail the person with id equal to {id}
@@ -72,7 +72,7 @@ API-REST with Spring Boot -System for registration of financial transactions.
 true | false
 ```
 
-#### c) Entry
+### c) Entry
 **1. GET /entry** - Search entries:
 
 *QueryParams:*
@@ -125,7 +125,7 @@ true | false
 }
 ```
 
-### Running
+## Running
 
 1. Import Maven Projects (IDE Eclipse ou STS);
 
@@ -137,6 +137,6 @@ true | false
 * http://localhost:8080/{endpoint}
 * http://localhost:8080//swagger-ui.html#/
 
-### URLs Heroku
+## URLs Heroku
 * https://financas-api-marcus.herokuapp.com/{endpoint}
 * https://financas-api-marcus.herokuapp.com/swagger-ui.html#/
