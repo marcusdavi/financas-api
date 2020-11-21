@@ -1,7 +1,24 @@
 # Financas-api
 API-REST with Spring Boot -System for registration of financial transactions.
 
-## 1. Endpoints
+
+## 1. Running
+
+1. Import Maven Projects (IDE Eclipse ou STS);
+
+2. Maven Build: clean install
+
+3. Run as SpringBoot Application
+
+4. Access:
+* http://localhost:8080/{endpoint}
+* http://localhost:8080//swagger-ui.html#/
+
+## 2. URLs Heroku
+* https://financas-api-marcus.herokuapp.com/{endpoint}
+* https://financas-api-marcus.herokuapp.com/swagger-ui.html#/
+
+## 3. Endpoints
 
 **Basic Authentication:**
 * **user:** admin@financas.com
@@ -124,19 +141,3 @@ true | false
   }
 }
 ```
-
-## Running
-
-1. Import Maven Projects (IDE Eclipse ou STS);
-
-2. Maven Build: clean install
-
-3. Run as SpringBoot Application
-
-4. Acess:
-* http://localhost:8080/{endpoint}
-* http://localhost:8080//swagger-ui.html#/
-
-## URLs Heroku
-* https://financas-api-marcus.herokuapp.com/{endpoint}
-* https://financas-api-marcus.herokuapp.com/swagger-ui.html#/
