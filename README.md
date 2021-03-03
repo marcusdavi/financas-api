@@ -12,7 +12,7 @@ API-REST with Spring Boot -System for registration of financial transactions.
 
 4. Access:
 * http://localhost:8080/{endpoint}
-* http://localhost:8080//swagger-ui.html#/
+* http://localhost:8080/swagger-ui.html#/
 
 ## 2. URLs Heroku
 * https://financas-api-marcus.herokuapp.com/{endpoint}
