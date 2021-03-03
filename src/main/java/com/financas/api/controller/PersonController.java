@@ -45,7 +45,7 @@ public class PersonController {
     @PreAuthorize("hasAuthority('PERMISSION_SEARCH_PERSON') and #oauth2.hasScope('read')")
     public ResponseEntity<Person> get(@PathVariable Long id) {
     	return service.get(id)
-                .map(ResponseEntity::ok)
+                .map(ResponseEntity::ok) 
                 .orElseGet(() -> ResponseEntity.notFound().build());
         
     }

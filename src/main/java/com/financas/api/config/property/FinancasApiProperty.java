@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties("financas-api")
 public class FinancasApiProperty {
 	
-	private String originAllowed = "http://127.0.0.1:5500";
+	private String originAllowed = "http://localhost:4200";
 
 	private final SecurityApi security = new SecurityApi();
 
